@@ -1,41 +1,49 @@
-<div class="task-list-container">
-  <div class="header-container">
-    <!-- <li class="nav-item"><a routerLink="/add-task" class="nav-link">Add Task</a></li> -->
-
-  <button (click)="exportToCSV()" class="export-button">Export to CSV</button>
-</div>
-<table class="task-table">
-  <thead>
-    <tr>
-      <th (click)="sort('title')">TITLE <i class="fas fa-sort"></i></th>
-      <th (click)="sort('description')">DESCRIPTION <i class="fas fa-sort"></i></th>
-      <th (click)="sort('dueDate')">DUE DATE <i class="fas fa-sort"></i></th>
-      <th (click)="sort('priority')">PRIORITY <i class="fas fa-sort"></i></th>
-      <th (click)="sort('status')">STATUS <i class="fas fa-sort"></i></th>
-      <th>ACTIONS <i class="fas fa-cogs"></i></th>
-      <th>HISTORY <i class="fas fa-history"></i></th> 
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let task of filteredTasks">
-      <td>{{ task.title }}</td>
-      <td>{{ task.description }}</td>
-      <td>{{ task.dueDate | date }}</td>
-      <td>{{ task.priority }}</td>
-      <td>{{ task.status }}</td>
-      <td>
-        <button (click)="editTask(task)" class="action-button edit-button">Edit</button>
-        <button (click)="deleteTask(task.id)" class="action-button delete-button">Delete</button>
-      </td>
-      <td>
-        <ul class="history-log-list">
-          <li *ngFor="let entry of task.history" class="history-log-item">
-            {{ entry.timestamp | date:'short' }} - {{ entry.action }}
-          </li>
-        </ul>
-      </td>
-
-    </tr>
-  </tbody>
-</table>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Task List</title>
+  <link rel="stylesheet" href="task-list.component.css">
+</head>
+<body>
+  <div class="task-list-container">
+    <div class="header-container">
+      <button (click)="exportToCSV()" class="export-button">Export to CSV</button>
+    </div>
+    <table class="task-table">
+      <thead>
+        <tr>
+          <th (click)="sort('title')">TITLE <i class="fas fa-sort"></i></th>
+          <th (click)="sort('description')">DESCRIPTION <i class="fas fa-sort"></i></th>
+          <th (click)="sort('dueDate')">DUE DATE <i class="fas fa-sort"></i></th>
+          <th (click)="sort('priority')">PRIORITY <i class="fas fa-sort"></i></th>
+          <th (click)="sort('status')">STATUS <i class="fas fa-sort"></i></th>
+          <th>ACTIONS <i class="fas fa-cogs"></i></th>
+          <th>HISTORY <i class="fas fa-history"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of filteredTasks">
+          <td>{{ task.title }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.dueDate | date }}</td>
+          <td>{{ task.priority }}</td>
+          <td>{{ task.status }}</td>
+          <td>
+            <button (click)="editTask(task)" class="action-button edit-button">Edit</button>
+            <button (click)="deleteTask(task.id)" class="action-button delete-button">Delete</button>
+          </td>
+          <td>
+            <ul class="history-log-list">
+              <li *ngFor="let entry of task.history" class="history-log-item">
+                {{ entry.timestamp | date:'short' }} - {{ entry.action }}
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

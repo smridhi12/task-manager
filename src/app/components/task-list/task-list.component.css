@@ -1,191 +1,192 @@
-/* Center the task list container and set up styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+.export-button {
+  background-color: #007bff; /* Blue color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  /* align-items: flex-end; */
+  margin-bottom: 15px; /* Space below the button */
+  font-size: 16px;
+}
+
+.export-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
 .task-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-    font-family: Arial, sans-serif;
-    color: #333;
-  }
-  
-  .task-table {
-    width: 100%;
-    max-width: 1200px; /* Limit the table width */
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  .task-table th,
-  .task-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .task-table th {
-    background-color: #9ea3a8;
-    color: white;
-    font-weight: bold;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px; /* Limit the container width */
+  margin: 0 auto; /* Center the container */
+  overflow-x: auto; /* Handle overflow */
+}
 
-  
-  .task-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .task-table tbody tr:hover {
-    background-color: #e9ecef;
-  }
-  
-  .action-button {
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-right: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .edit-button {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .edit-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .delete-button {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .delete-button:hover {
-    background-color: #c82333;
-  }
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
 
+.task-table th,
+.task-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+  background-color: #9ea3a8;
+  color: white;
+  font-weight: bold;
+}
+
+.task-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.task-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.action-button {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.history-log-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.history-log-item {
+  background-color: #f4f4f4;
+  border-left: 4px solid #2196F3;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-size: 14px;
+}
+
+.history-log-item:nth-child(even) {
+  background-color: #e9e9e9;
+}
+
+.history-log-item:hover {
+  background-color: #e0f7fa;
+  cursor: pointer;
+  transform: translateY(-2px);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
   .task-list-container {
-    width: 100%;
+    padding: 10px;
   }
-  
-  .task-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
+
   .task-table th, .task-table td {
     padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
   }
-  
-  .action-button {
-    padding: 5px 10px;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .edit-button {
-    background-color: #4CAF50; /* Green */
-  }
-  
-  .delete-button {
-    background-color: #f44336; /* Red */
-  }
-  
-  .history-button {
-    background-color: #2196F3; /* Blue */
-  }
-  
-  .history-log {
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    background-color: #f9f9f9;
-  }
-  
-  .history-log h3 {
-    margin-top: 0;
-  }
-  
-  .history-log ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .history-log li {
-    padding: 5px 0;
-  }
-  
-  .history-log-list {
-    list-style-type: none; /* Remove default bullet points */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-    font-family: 'Arial', sans-serif; /* Set font */
-  }
-  
-  .history-log-item {
-    background-color: #f4f4f4; /* Light background for each item */
-    border-left: 4px solid #2196F3; /* Blue left border */
-    padding: 10px 15px; /* Padding inside each item */
-    margin-bottom: 8px; /* Space between items */
-    border-radius: 4px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
-    color: #333; /* Dark text color */
-    font-size: 14px; /* Adjust font size */
-  }
-  
-  .history-log-item:nth-child(even) {
-    background-color: #e9e9e9; /* Alternate background color */
-  }
-  
-  .history-log-item:hover {
-    background-color: #e0f7fa; /* Light blue background on hover */
-    cursor: pointer; /* Pointer cursor on hover */
-    transform: translateY(-2px); /* Slight lift effect */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
-  }
-  /* Style for table headers to indicate they are clickable */
-th {
-    cursor: pointer;
-    /* Optional: Add visual feedback on hover */
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  th:hover {
-    background-color: #f0f0f0; /* Light grey background on hover */
-    color: #007bff; /* Change text color on hover */
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .export-button {
-    background-color: #007bff; /* Blue color */
-    color: white;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .task-table th, .task-table td {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-table, .task-table thead, .task-table tbody, .task-table th, .task-table td, .task-table tr {
+    display: block;
+  }
+
+  .task-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .task-table tr {
+    margin: 0 0 1rem 0;
+  }
+
+  .task-table td {
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    /* align-items: flex-end; */
-    margin-bottom: 15px; /* Space below the button */
-    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
   }
-  
-  .export-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+
+  .task-table td:before {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    transform: translateY(-50%);
   }
-  
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+
+  .task-table td:nth-of-type(1):before { content: "TITLE"; }
+  .task-table td:nth-of-type(2):before { content: "DESCRIPTION"; }
+  .task-table td:nth-of-type(3):before { content: "DUE DATE"; }
+  .task-table td:nth-of-type(4):before { content: "PRIORITY"; }
+  .task-table td:nth-of-type(5):before { content: "STATUS"; }
+  .task-table td:nth-of-type(6):before { content: "ACTIONS"; }
+  .task-table td:nth-of-type(7):before { content: "HISTORY"; }
+
+  .action-button {
+    width: 100%;
+    margin: 5px 0;
   }
+}
