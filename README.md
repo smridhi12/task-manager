@@ -17,3 +17,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Project Screenshots 
 
 ![alt text](home.png)
+
+![alt text](form.png)
