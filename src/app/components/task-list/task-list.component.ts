@@ -5,6 +5,7 @@ import { Task } from '../../models/task.model';
 import { selectAllTasks } from '../../store/selectors/task.selectors';
 import { deleteTask } from '../../store/actions/task.actions';
 import { RouteConfigLoadEnd, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-task-list',
@@ -26,7 +27,7 @@ export class TaskListComponent implements OnInit {
   sortField: keyof Task = 'title';
   sortOrder: 'asc' | 'desc' = 'asc';
 
-  constructor(private store: Store, private router: Router) {
+  constructor(private store: Store, private router: Router, private toastr: ToastrService) {
     this.tasks$ = this.store.select(selectAllTasks);
   }
 
@@ -38,14 +39,13 @@ export class TaskListComponent implements OnInit {
   }
 
   editTask(task: Task) {
-    // Navigate to the task form component with task details
     this.router.navigate(['/add-task'], { state: { task } });
   }
   toggleHistory(taskId: number): void {
     if (this.expandedTaskId === taskId) {
-      this.expandedTaskId = null; // Collapse if already expanded
+      this.expandedTaskId = null; 
     } else {
-      this.expandedTaskId = taskId; // Expand the new task
+      this.expandedTaskId = taskId; 
     }
   }
 
@@ -77,7 +77,7 @@ export class TaskListComponent implements OnInit {
   }
   
 
-  sort(field: keyof Task): void { // Use keyof Task here
+  sort(field: keyof Task): void { 
     if (this.sortField === field) {
       this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
     } else {
@@ -88,10 +88,7 @@ export class TaskListComponent implements OnInit {
   }
 
   exportToCSV() {
-    // Define headers
     const headers = ['Title', 'Description', 'Due Date', 'Priority', 'Status'];
-    
-    // Map filteredTasks to rows with formatted dates
     const rows = this.filteredTasks.map(task => [
       task.title,
       task.description,
@@ -100,16 +97,19 @@ export class TaskListComponent implements OnInit {
       task.status
     ]);
     
-    // Combine headers and rows into CSV content
+    if(rows.length <=0)
+      {
+        this.toastr.error('There is no row to export.');
+        return;
+      }
+  
     const csvContent = [
       headers.join(','),
       ...rows.map(row => row.join(','))
     ].join('\n');
     
-    // Create a Blob from the CSV content
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     
-    // Create a link and trigger download
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -119,15 +119,11 @@ export class TaskListComponent implements OnInit {
     document.body.removeChild(link);
   }
   
-  // Method to format the date
 formatDate(dateString: string): string {
-  if (!dateString) return ''; // Return empty string if no date
+  if (!dateString) return ''; 
 
   const date = new Date(dateString);
-  if (isNaN(date.getTime())) return ''; // Return empty string if invalid date
-
-  // Format the date in a consistent format (e.g., YYYY-MM-DD)
+  if (isNaN(date.getTime())) return ''; 
   return date.toISOString().split('T')[0];
 }
-  // Additional methods for sorting, exporting, etc.
 }

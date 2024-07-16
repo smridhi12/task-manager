@@ -11,7 +11,7 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
 
 import { taskReducer } from './store/reducers/task.reducer';
 import { TaskEffects } from './store/effects/task.effects';
-import { AppComponent } from './app.component'; // Import AppComponent
+import { AppComponent } from './app.component'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 @NgModule({
@@ -21,13 +21,13 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, // Required for ngx-toastr
+    BrowserAnimationsModule, 
     ToastrModule.forRoot({
-        positionClass: 'toast-top-right', // Position toast at top right
-        timeOut: 5000, // Duration of the toast in milliseconds
+        positionClass: 'toast-top-right', 
+        timeOut: 5000, 
         extendedTimeOut: 1000,
-        progressBar: true, // Show progress bar
-        progressAnimation: 'increasing' // Progress animation style
+        progressBar: true,
+        progressAnimation: 'increasing' 
       }),
     AppRoutingModule,
     FormsModule,
@@ -37,6 +37,6 @@ import { ToastrModule } from 'ngx-toastr';
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   providers: [],
-  bootstrap: [AppComponent] // Bootstrap AppComponent directly
+  bootstrap: [AppComponent] 
 })
 export class AppModule { }

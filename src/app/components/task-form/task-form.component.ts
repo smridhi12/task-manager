@@ -27,7 +27,7 @@ export class TaskFormComponent implements OnInit {
       description: ['', Validators.required],
       dueDate: ['', Validators.required],
       priority: ['', Validators.required],
-      status: ['', Validators.required]  // Add this line
+      status: ['', Validators.required]  
     });
 
     this.router.events.subscribe(event => {
@@ -65,10 +65,14 @@ export class TaskFormComponent implements OnInit {
         this.toastr.success('Task added successfully!', 'Add Success');
       }
 
-      // Redirect to the task list page after saving
       this.router.navigate(['/tasks']);
     } else {
       this.toastr.error('Please fill in all required fields.', 'Form Incomplete'); 
     }
+  }
+
+  onCancel()
+  {
+    this.router.navigate(['/tasks']);
   }
 }

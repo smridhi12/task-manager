@@ -10,12 +10,8 @@
 
   @Injectable()
   export class TaskEffects {
-
-
-
     constructor( private actions$: Actions, private taskService: TaskService, private store: Store) {
-     
-        // Effect to load tasks from local storage
+ 
         var loadTasks$ = createEffect(() =>
           this.actions$.pipe(
             ofType(loadTasks),
@@ -32,7 +28,6 @@
         );
     
 
-        // Effect to add a task and save it to local storage
     var addTask$ = createEffect(() =>
       this.actions$.pipe(
         ofType(addTask),
@@ -50,7 +45,6 @@
       )
     );
 
-    // Effect to update a task and save it to local storage
    var updateTask$ = createEffect(() =>
       this.actions$.pipe(
         ofType(updateTask),
@@ -73,7 +67,6 @@
       )
     );
 
-    // Effect to delete a task and remove it from local storage
    var deleteTask$ = createEffect(() =>
       this.actions$.pipe(
         ofType(deleteTask),
