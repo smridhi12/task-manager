@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0 along with ngrx store.
 
-## Live demo: 
+## Live demo
 
 https://task-manager-brown-phi.vercel.app/
 
@@ -16,6 +16,18 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Project Screenshots 
 
+Desktop view
+
 ![alt text](home.png)
 
 ![alt text](form.png)
+
+Mobile view
+
+![alt text](mobileview.jpg)
+
+![alt text](mobileview2.jpg)
+
+## Project Functionalities
+
+1. Sorts the tasks on the basis of due date, priority, status
