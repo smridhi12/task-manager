@@ -26,8 +26,19 @@ Mobile view
 
 ![alt text](image.png)
 
-![alt text](mobileview2.jpg)
+![alt text](image-1.png)
 
 ## Project Functionalities
 
-1. Sorts the tasks on the basis of due date, priority, status
+1. Users can add new tasks with a title, description, due date, and priority level (low, medium, high).
+2. Users can also update the status of tasks (to-do, in-progress, completed) and also edit or delete tasks.
+3. Users can sort the tasks on the basis of due date, priority, status.
+
+![alt text](datesort.png)
+
+![alt text](prioritysort.png)
+
+![alt text](statussort.png)
+
+4. Users can export the tasks to a CSV file.
+5. A history log shows all the changes made to each task.
