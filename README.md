@@ -24,7 +24,7 @@ Desktop view
 
 Mobile view
 
-![alt text](mobileview.jpg)
+![alt text](image.png)
 
 ![alt text](mobileview2.jpg)
 
